@@ -25,9 +25,8 @@ public class GamePanel extends JPanel implements ActionListener {
 
 
     GamePanel(){
-        setPreferredSize(new Dimension(SCREEN_WIDTH,SCREEN_HEIGHT));
+        setSize(new Dimension(SCREEN_WIDTH,SCREEN_HEIGHT));
         setFocusable(true);
-        addKeyListener(new SnakeKeyAdapter());
         start();
     }
 
@@ -84,6 +83,8 @@ public class GamePanel extends JPanel implements ActionListener {
                 }
             }
         }
+        g.setColor(Color.red);
+        g.fillOval(appleX*SQUARE_SIZE,appleY*SQUARE_SIZE,SQUARE_SIZE,SQUARE_SIZE);
     }
     private void move(){
         currentDirection=chosenDirection;
@@ -133,13 +134,11 @@ public class GamePanel extends JPanel implements ActionListener {
     }
     private void checkCollisions(){
         if(grid[snakeX[0]][snakeY[0]]=='1'){
-            System.out.println(1);
             stopGame();
             return;
         }
         for(int i=1;i<snakeLength;i++){
             if(snakeX[0]==snakeX[i]&&snakeY[0]==snakeY[i]&&snakeX[i]!=0){
-                System.out.println(2);
                 stopGame();
                 return;
             }
@@ -154,28 +153,19 @@ public class GamePanel extends JPanel implements ActionListener {
         if(running)repaint();
     }
 
-    private class SnakeKeyAdapter extends KeyAdapter{
-
-        @Override
-        public void keyPressed(KeyEvent e) {
-            System.out.println(e.getKeyCode());
-            switch (e.getKeyCode()) {
-                case KeyEvent.VK_A, KeyEvent.VK_LEFT -> {
-                    System.out.println(1);
-                    if(currentDirection!='R')chosenDirection = 'L';
-                }
-                case KeyEvent.VK_D, KeyEvent.VK_RIGHT -> {
-                    System.out.println(2);
-                    if(currentDirection!='L')chosenDirection = 'R';
-                }
-                case KeyEvent.VK_W, KeyEvent.VK_UP -> {
-                    System.out.println(3);
-                    if(currentDirection!='D')chosenDirection = 'U';
-                }
-                case KeyEvent.VK_S, KeyEvent.VK_DOWN -> {
-                    System.out.println(4);
-                    if(currentDirection!='U')chosenDirection = 'D';
-                }
+    public void keyPressed(KeyEvent e) {
+        switch (e.getKeyCode()) {
+            case KeyEvent.VK_A, KeyEvent.VK_LEFT -> {
+                if(currentDirection!='R')chosenDirection = 'L';
+            }
+            case KeyEvent.VK_D, KeyEvent.VK_RIGHT -> {
+                if(currentDirection!='L')chosenDirection = 'R';
+            }
+            case KeyEvent.VK_W, KeyEvent.VK_UP -> {
+                if(currentDirection!='D')chosenDirection = 'U';
+            }
+            case KeyEvent.VK_S, KeyEvent.VK_DOWN -> {
+                if(currentDirection!='U')chosenDirection = 'D';
             }
         }
     }
