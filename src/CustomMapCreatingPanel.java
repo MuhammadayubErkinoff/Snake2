@@ -60,7 +60,7 @@ public class CustomMapCreatingPanel extends JPanel {
          //Start button
          SnakeButton start=new SnakeButton("Start");
          start.setBounds(375,560,200,50);
-         start.addActionListener(e->{customMap.writeMap();gameFrame.changePanel(new GamePanel(gameFrame,1500/speed.getValue(),"src/Maps/custom.txt",isSnakeGrows.isSelected(),length.getValue(),this),true);});
+         start.addActionListener(e->{customMap.writeMap();gameFrame.changePanel(new GamePanel(gameFrame,1500/speed.getValue(),"src/Maps/custom.txt",isSnakeGrows.isSelected(),snakeBots.isSelected(),length.getValue(),this),true);});
          add(start);
 
 

@@ -33,7 +33,7 @@ public class MapChoosingPanel extends JPanel {
             SnakeButton button=new SnakeButton(names.get(i));
             button.setBounds(currentX,currentY,BUTTON_WIDTH,BUTTON_HEIGHT);
             int finalI = i;
-            button.addActionListener(e->gameFrame.changePanel(new GamePanel(gameFrame,delay,addresses.get(finalI),false,snakeLength, new MapChoosingPanel(gameFrame,delay,snakeLength)),true));
+            button.addActionListener(e->gameFrame.changePanel(new GamePanel(gameFrame,delay,addresses.get(finalI),false,true,snakeLength, new MapChoosingPanel(gameFrame,delay,snakeLength)),true));
             if(i%5==4) {
                 currentX=75;
                 currentY+=BUTTON_HEIGHT+V_GAP;

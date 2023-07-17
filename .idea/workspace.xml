@@ -4,34 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="21eff11a-349d-4eca-8952-faf777f9e4f4" name="Changes" comment="Fixed the bug of not working KeyAdapter(GamePanel is not getting focus, and I do not know how to improve that. So I created KeyAdapter in GameFrame)">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/BackButton.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/CustomMapCreatingPanel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/CustomMapPanel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/MainPanel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/MapChoosingPanel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Maps.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Maps/0.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Maps/10.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Maps/11.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Maps/12.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Maps/13.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Maps/14.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Maps/2.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Maps/3.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Maps/4.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Maps/5.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Maps/6.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Maps/7.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Maps/8.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Maps/9.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Maps/custom.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/SnakeButton.java" afterDir="false" />
+    <list default="true" id="21eff11a-349d-4eca-8952-faf777f9e4f4" name="Changes" comment="Game is fully functional.&#10;Changes:&#10;-Main menu is added&#10;-Hardness levels are added&#10;-Custom map creating added&#10;Left to doing:&#10;-SnakeBots">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/1.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/Maps/1.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GameFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/CustomMapCreatingPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CustomMapCreatingPanel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/GamePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GamePanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MainPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MainPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MapChoosingPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MapChoosingPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Maps/5.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/Maps/5.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -103,7 +82,14 @@
       <option name="project" value="LOCAL" />
       <updated>1689510285931</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Game is fully functional.&#10;Changes:&#10;-Main menu is added&#10;-Hardness levels are added&#10;-Custom map creating added&#10;Left to doing:&#10;-SnakeBots">
+      <created>1689604109898</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1689604109898</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -122,7 +108,8 @@
     <MESSAGE value="Starting" />
     <MESSAGE value="Map Import is ready&#10;Game Panel also is almost ready(need to fix the bug of KeyAdapter)" />
     <MESSAGE value="Fixed the bug of not working KeyAdapter(GamePanel is not getting focus, and I do not know how to improve that. So I created KeyAdapter in GameFrame)" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed the bug of not working KeyAdapter(GamePanel is not getting focus, and I do not know how to improve that. So I created KeyAdapter in GameFrame)" />
+    <MESSAGE value="Game is fully functional.&#10;Changes:&#10;-Main menu is added&#10;-Hardness levels are added&#10;-Custom map creating added&#10;Left to doing:&#10;-SnakeBots" />
+    <option name="LAST_COMMIT_MESSAGE" value="Game is fully functional.&#10;Changes:&#10;-Main menu is added&#10;-Hardness levels are added&#10;-Custom map creating added&#10;Left to doing:&#10;-SnakeBots" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Snake_2$Main.ic" NAME="Main Coverage Results" MODIFIED="1689424581183" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />

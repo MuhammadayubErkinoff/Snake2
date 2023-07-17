@@ -11,7 +11,7 @@ public class MainPanel extends JPanel {
 
         //classical game button
         SnakeButton classical=new SnakeButton("Classical");
-        classical.addActionListener(e -> gameFrame.changePanel(new GamePanel(gameFrame,150,"/Users/muhammadayubxon/IdeaProjects/Snake 2/src/Maps/0.txt",true,6,new MainPanel(gameFrame)),true));
+        classical.addActionListener(e -> gameFrame.changePanel(new GamePanel(gameFrame,150,"/Users/muhammadayubxon/IdeaProjects/Snake 2/src/Maps/0.txt",true,false,6,new MainPanel(gameFrame)),true));
         classical.setBounds(350,100,300,60);
         add(classical);
 
