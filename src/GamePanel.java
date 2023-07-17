@@ -3,19 +3,21 @@ import java.awt.*;
 import java.awt.event.*;
 import java.io.BufferedInputStream;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.util.Random;
 
 public class GamePanel extends JPanel implements ActionListener {
-    private final int SCREEN_WIDTH=1000,SCREEN_HEIGHT=600,SQUARE_SIZE=25;
+    private GameFrame gameFrame;
+    private final JLabel score;
+    private final int SCREEN_WIDTH=1000,SCREEN_HEIGHT=650,SQUARE_SIZE=25;
     private final int SQUARE_NUMBER=SCREEN_HEIGHT*SCREEN_WIDTH/SQUARE_SIZE;
-    private final int Y=SCREEN_HEIGHT/SQUARE_SIZE,X=SCREEN_WIDTH/SQUARE_SIZE;
-    private int DELAY=150;
-    private Timer timer=new Timer(DELAY,this);
-    private boolean snakeGrowing=true;
-    private int appleX=0,appleY=0;
-    private int snakeLength=6, applesEaten=0;
-    private char chosenDirection='D';
+    private final int Y=(SCREEN_HEIGHT-50)/SQUARE_SIZE,X=SCREEN_WIDTH/SQUARE_SIZE;
+    private final int DELAY;
+    private final String map;
+    private Timer timer;
+    private boolean snakeGrowing;
+    private int appleX,appleY;
+    private int snakeLength, applesEaten=0;
+    private char chosenDirection='R';
     private char currentDirection='R';
     private boolean running=false;
     private final char[][] grid=new char[X][Y];
@@ -24,19 +26,38 @@ public class GamePanel extends JPanel implements ActionListener {
     private final Random random=new Random();
 
 
-    GamePanel(){
+    GamePanel(GameFrame gameFrame, int delay, String map, boolean snakeGrowing,int snakeLength,JPanel to){
+        this.gameFrame=gameFrame;
+        this.DELAY=delay;
+        this.map=map;
+        this.snakeGrowing=snakeGrowing;
+        this.snakeLength=snakeLength;
+
+        BackButton back=new BackButton(gameFrame,to,false);
+
+        score=new JLabel("Your Score is 0");
+        score.setBounds(400,0,300,50);
+        score.setFont(new Font("qwe",Font.BOLD,30));
+        score.setAlignmentX(CENTER_ALIGNMENT);
+
+
+        add(back);
+        add(score);
         setSize(new Dimension(SCREEN_WIDTH,SCREEN_HEIGHT));
+        setLayout(null);
         setFocusable(true);
         start();
     }
 
     private void start(){
         running=true;
-        readMap("/Users/muhammadayubxon/IdeaProjects/Snake 2/src/1.txt");
-        snakeX[0]=2;
-        snakeY[0]=1;
-        snakeX[1]=1;
-        snakeY[1]=1;
+        readMap(map);
+        snakeX[0]=1;
+        snakeY[0]=0;
+        snakeX[1]=0;
+        snakeY[1]=0;
+        newApple();
+        timer=new Timer(DELAY,this);
         timer.start();
     }
     private void readMap(String fileName){
@@ -50,7 +71,7 @@ public class GamePanel extends JPanel implements ActionListener {
             }
         }
         catch (Exception e){
-            System.out.println(e);
+            System.out.println("File was not found");
         }
     }
 
@@ -69,22 +90,25 @@ public class GamePanel extends JPanel implements ActionListener {
             g.drawLine(i*SQUARE_SIZE,0,i*SQUARE_SIZE,SCREEN_HEIGHT);
         }
          */
+        g.setColor(Color.GRAY);
+        g.drawLine(0,49,SCREEN_WIDTH,49);
+        g.drawLine(0,50,SCREEN_WIDTH,50);
         g.setColor(new Color(0,100,0));
-        g.fillRect(snakeX[0]*SQUARE_SIZE,snakeY[0]*SQUARE_SIZE,SQUARE_SIZE,SQUARE_SIZE);
+        g.fillRect(snakeX[0]*SQUARE_SIZE,snakeY[0]*SQUARE_SIZE+50,SQUARE_SIZE,SQUARE_SIZE);
         g.setColor(new Color(0,180,0));
         for(int i=1;i<snakeLength;i++){
-            g.fillRect(snakeX[i]*SQUARE_SIZE,snakeY[i]*SQUARE_SIZE,SQUARE_SIZE,SQUARE_SIZE);
+            g.fillRect(snakeX[i]*SQUARE_SIZE,snakeY[i]*SQUARE_SIZE+50,SQUARE_SIZE,SQUARE_SIZE);
         }
         g.setColor(Color.gray);
         for(int i=0;i<Y;i++){
             for(int j=0;j<X;j++){
                 if(grid[j][i]=='1'){
-                    g.fillRect(j*SQUARE_SIZE,i*SQUARE_SIZE,SQUARE_SIZE,SQUARE_SIZE);
+                    g.fillRect(j*SQUARE_SIZE,i*SQUARE_SIZE+50,SQUARE_SIZE,SQUARE_SIZE);
                 }
             }
         }
         g.setColor(Color.red);
-        g.fillOval(appleX*SQUARE_SIZE,appleY*SQUARE_SIZE,SQUARE_SIZE,SQUARE_SIZE);
+        g.fillOval(appleX*SQUARE_SIZE,appleY*SQUARE_SIZE+50,SQUARE_SIZE,SQUARE_SIZE);
     }
     private void move(){
         currentDirection=chosenDirection;
@@ -124,7 +148,12 @@ public class GamePanel extends JPanel implements ActionListener {
     private void checkApples(){
         if(isInSnake(appleX,appleY)){
             applesEaten++;
-            if(snakeGrowing)snakeLength++;
+            score.setText("Your Score is "+applesEaten);
+            if(snakeGrowing){
+                snakeX[snakeLength]=snakeX[snakeLength-1];
+                snakeY[snakeLength]=snakeY[snakeLength-1];
+                snakeLength++;
+            }
             newApple();
         }
     }

@@ -1,46 +1,37 @@
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.*;
 
 public class GameFrame extends JFrame {
-    boolean isGP;
+    boolean isGamePanel=false;
     GameFrame gf;
-    GamePanel gp;
+    JPanel currentPanel;
     GameFrame(){
         super("Snake 2");
+        isGamePanel=false;
         gf=this;
-        JButton startButton=new JButton("START");
-        startButton.setBounds(400,250,200,100);
-        startButton.setBackground(Color.green);
-        startButton.setOpaque(true);
-        startButton.setBorderPainted(false);
-        startButton.setForeground(Color.white);
-        startButton.setFont(new Font("qwe",Font.BOLD,40));
-        startButton.addActionListener(e -> {
-            remove(startButton);
-            gp=new GamePanel();
-            isGP=true;
-            add(gp);
-            SwingUtilities.updateComponentTreeUI(gf);
-        });
+        currentPanel=new MainPanel(gf);
         addKeyListener(new KeyAdapter() {
             @Override
             public void keyPressed(KeyEvent e) {
-                if (isGP){
-                    gp.keyPressed(e);
+                if (isGamePanel){
+                    ((GamePanel)currentPanel).keyPressed(e);
                 }
             }
         });
-
-
-
-        add(startButton);
+        add(currentPanel);
         setFocusable(true);
         setLayout(null);
-        this.setSize(1000,628);
+        this.setSize(1000,678);
         this.setDefaultCloseOperation(GameFrame.EXIT_ON_CLOSE);
         this.setResizable(false);
         this.setVisible(true);
 
+    }
+    public void changePanel(JPanel newPanel, boolean isGamePanel){
+        remove(currentPanel);
+        currentPanel=newPanel;
+        add(currentPanel);
+        this.isGamePanel=isGamePanel;
+        SwingUtilities.updateComponentTreeUI(gf);
     }
 }
